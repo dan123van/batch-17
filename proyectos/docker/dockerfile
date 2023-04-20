@@ -1,0 +1,20 @@
+# Usa la imagen de node js.
+FROM node:12.10.0
+
+# Establece el directorio de trabajo de nuestro contenedor.
+WORKDIR /app
+
+# coia el archivo package.json al contenedor.
+COPY package.json ./
+
+# Ejecuta el comando para instalar las dependencias.
+RUN npm install
+
+# Copia el codigo fuente de la aplicacion al contenedor.
+COPY . .
+
+# Expone el puerto 300 para poder ser accesible.
+EXPOSE 3000
+
+# Define los comandos para iniciar la aplicación.
+CMD ["npm", "start"]
